@@ -170,10 +170,13 @@ function Invoke-AtomicTest {
         if(-not $NoExecutionLog) {
             $isLoggingModuleSet = $true
             if(-not $PSBoundParameters.ContainsKey('LoggingModule')) {
-                Import-Module "$PSScriptRoot\Default-ExecutionLogger.psm1" -Force
-                $LoggingModule = "Default-ExecutionLogger"
+                #Import-Module "$PSScriptRoot\Default-ExecutionLogger.psm1" -Force
+                #$LoggingModule = "Default-ExecutionLogger"
+                Import-Module "$PSScriptRoot\BM-ExecutionLogger.psm1" -Force
+                $LoggingModule = "BM-ExecutionLogger"
             } else {
-                Remove-Module -Name "Default-ExecutionLogger" -erroraction silentlycontinue
+                #Remove-Module -Name "Default-ExecutionLogger" -erroraction silentlycontinue
+                Remove-Module -Name "BM-ExecutionLogger" -erroraction silentlycontinue
             }
         }
 
